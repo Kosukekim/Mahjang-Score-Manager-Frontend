@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const fontSizes: any = ["12px", "14px", "16px", "20px", "24px", "32px"]
+const fontSizes: any = ['12px', '14px', '16px', '20px', '24px', '32px']
 
 fontSizes.extraSmall = fontSizes[0]
 fontSizes.small = fontSizes[1]
