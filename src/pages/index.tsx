@@ -1,5 +1,5 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
-import tableSample from 'services/tables/table-sample'
+import getTableByRoomID from 'services/rooms/get-tables-by-roomID'
 import { ApiContext, Table } from 'types/data'
 
 type HomePageProps = InferGetStaticPropsType<typeof getStaticProps>
@@ -17,7 +17,9 @@ const HomePage: NextPage<HomePageProps> = ({ sampleData }: HomePageProps) => {
   console.log(sampleData.name)
   return (
     <>
-      {displayTable(sampleData)}
+      {sampleData.map((table:Table, i:number) => (
+        displayTable(table)
+      ))}
     </>
   )
 }
@@ -28,7 +30,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   const [sampleData] = await Promise.all([
-    tableSample(context, { id: 'cf866673-4789-4092-9751-fe6ad17ff6b6' }),
+    getTableByRoomID(context, { id: '3bcd67cb-0f1f-4883-93fb-aa84d457ce9d' }),
   ])
   return {
     props: {
